@@ -1,0 +1,47 @@
+* se requiere de la variable del sistema JBOSS_HOME
+
+- Preparar la base de datos h2 (desde la carpeta libs/h2)
+	# ejecutar h2
+		- h2.bat
+		- sh h2.sh &
+	# abrir h2 console
+	# usar la cadena de conexion 
+		'jdbc:h2:~/testlocal;MVCC=TRUE;AUTO_SERVER=TRUE'
+	# ejecutar el script database.sql
+- Configuración del proyecto (desde la carpeta raiz)
+	# desde linea de comandos
+	# libs/jboss-seam-2.2.0.GA/seam setup
+		# input 1: directorio de proyecto, ingresar el directorio actual (/opt/projects/presentations/seam)
+		# input 2: directorio jboss, ingresar la direccion del directorio de JBoss AS 6 (/opt/bin/jboss-5.1.0.GA)
+		# input 3: directorio glassfish, omitir
+		# input 4: dominio glassfish, omitir
+		# input 5: nombre proyecto,'comercial_yuyo'
+		# input 6: skin,*seleccionar cualquiera
+		# input 7: tipo de aplicacion,'war'
+		# input 8: paquete base,aceptar tal como esta
+		# input 9: paquete clases control, aceptar tal como esta
+		# input 10: paquete clases sesion, aceptar tal como esta
+		# input 11: paquete clases modelo, aceptar tal como esta
+		# input 12: base de datos, seleccionar 'h2'
+		# input 13: ubicacion h2, 'ingresar el path absoluto de la libreria h2 (/opt/projects/presentations/seam/libs/h2/bin/h2-1.3.169.jar)
+		# input 14: 'org.hibernate.dialect.H2Dialect'
+		# input 15: clase driver, 'org.h2.Driver'
+		# input 16: datasource, aceptar tal como esta (datasource class)
+		# input 17: url de la base de datos, 'jdbc:h2:~/testlocal;MVCC=TRUE;AUTO_SERVER=TRUE'
+		# input 18: database user, 'sa'
+		# input 19: database password, ''
+		# input 20: database schema, ''
+		# input 21: database catalog, ''
+		# input 22: 'esta trabajando con tablas ya existentes? ' > 'y'
+		# input 23: 'quiere recrear las tablas y ejecutar import.sql cada vez que despliegue la aplicacion?' > 'n'
+- Creacion del proyecto
+	# libs/jboss-seam-2.2.0.GA/seam create-project
+- Generacion de la aplicacion CRUD a partir de la base de datos existente
+	# libs/jboss-seam-2.2.0.GA/seam generate
+- Despliegue de la aplicacion generada (desde la carpeta 'comercial_yuyo')
+	# ant explode
+- Integrar H2 con JBoss AS
+	# copiar el archivo libs/h2/bin/h2.jar a JBOSS_HOME/server/default/lib
+- Ejecutar JBoss AS (En JBOSS_HOME/bin
+	# run
+	# con un navegador, acceder a 'http://localhost:8080/comercial_yuyo/'
