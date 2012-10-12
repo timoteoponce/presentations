@@ -1,0 +1,150 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="producto" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{productoHome.managed ? 'Edit' : 'Add'} Producto</f:facet>
+
+
+
+            <s:decorate id="codigoField" template="layout/edit.xhtml">
+                <ui:define name="label">Codigo</ui:define>
+                <h:inputText id="codigo"
+                       required="true"
+                           size="64"
+                      maxlength="64"
+                          value="#{productoHome.instance.codigo}">
+                    <a:support event="onblur" reRender="codigoField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="descripcionField" template="layout/edit.xhtml">
+                <ui:define name="label">Descripcion</ui:define>
+                <h:inputTextarea id="descripcion"
+                               cols="80"
+                               rows="3"
+                           required="true"
+                              value="#{productoHome.instance.descripcion}"/>
+            </s:decorate>
+
+
+
+            <s:decorate id="nombreField" template="layout/edit.xhtml">
+                <ui:define name="label">Nombre</ui:define>
+                <h:inputTextarea id="nombre"
+                               cols="80"
+                               rows="3"
+                           required="true"
+                              value="#{productoHome.instance.nombre}"/>
+            </s:decorate>
+
+
+            <s:decorate id="precioField" template="layout/edit.xhtml">
+                <ui:define name="label">Precio</ui:define>
+                <h:inputText id="precio"
+                       required="true"
+                          value="#{productoHome.instance.precio}"
+                           size="27">
+                    <a:support event="onblur" reRender="precioField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{productoHome.persist}"
+                       disabled="#{!productoHome.wired}"
+                       rendered="#{!productoHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{productoHome.update}"
+                       rendered="#{productoHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{productoHome.remove}"
+                      immediate="true"
+                       rendered="#{productoHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/Producto.xhtml"
+                rendered="#{productoHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty productoFrom ? 'ProductoList' : productoFrom}.xhtml"
+                rendered="#{!productoHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="Detalle ventas">
+        <h:form styleClass="association" id="detalleVentasChildren">
+
+            <h:outputText value="There are no detalleVentas associated with this producto."
+                       rendered="#{empty productoHome.detalleVentas}"/>
+
+            <rich:dataTable value="#{productoHome.detalleVentas}"
+                           var="_detalleVenta"
+                      rendered="#{not empty productoHome.detalleVentas}"
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="detalleVentasTable">
+                <rich:column sortBy="#{_detalleVenta.id.idProducto}">
+                    <f:facet name="header">Id producto</f:facet>
+                    <h:outputText value="#{_detalleVenta.id.idProducto}"/>
+                </rich:column>
+                <rich:column sortBy="#{_detalleVenta.id.idVenta}">
+                    <f:facet name="header">Id venta</f:facet>
+                    <h:outputText value="#{_detalleVenta.id.idVenta}"/>
+                </rich:column>
+                <rich:column sortBy="#{_detalleVenta.cantidad}">
+                    <f:facet name="header">Cantidad</f:facet>
+                    <h:outputText value="#{_detalleVenta.cantidad}"/>
+                </rich:column>
+            </rich:dataTable>
+
+        </h:form>
+
+        <f:subview rendered="#{productoHome.managed}" id="detalleVentas">
+        <div class="actionButtons">
+            <s:button id="adddetalleVenta"
+                   value="Add detalleVenta"
+                    view="/DetalleVentaEdit.xhtml"
+             propagation="none">
+                 <f:param name="productoId"
+                         value="#{productoHome.instance.id}"/>
+                 <f:param name="detalleVentaFrom" value="Producto"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

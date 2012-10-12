@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<suite name="VentaAction2 Tests" verbose="2" parallel="false">
+   <test name="VentaAction2 Test">
+     <classes>
+       <class name="com.mydomain.comercial_yuyo.test.VentaAction2Test"/>       
+     </classes>
+   </test>	
+</suite>

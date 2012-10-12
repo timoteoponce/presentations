@@ -1,0 +1,114 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <rich:panel>
+        <f:facet name="header">Cliente Details</f:facet>
+
+
+        <s:decorate id="apellido" template="layout/display.xhtml">
+            <ui:define name="label">Apellido</ui:define>
+            <h:outputText value="#{clienteHome.instance.apellido}"/>
+        </s:decorate>
+
+        <s:decorate id="email" template="layout/display.xhtml">
+            <ui:define name="label">Email</ui:define>
+            <h:outputText value="#{clienteHome.instance.email}"/>
+        </s:decorate>
+
+        <s:decorate id="nombre" template="layout/display.xhtml">
+            <ui:define name="label">Nombre</ui:define>
+            <h:outputText value="#{clienteHome.instance.nombre}"/>
+        </s:decorate>
+
+        <s:decorate id="saldo" template="layout/display.xhtml">
+            <ui:define name="label">Saldo</ui:define>
+            <h:outputText value="#{clienteHome.instance.saldo}">
+                <f:convertNumber/>
+            </h:outputText>
+        </s:decorate>
+
+        <div style="clear:both"/>
+
+    </rich:panel>
+
+    <div class="actionButtons">
+
+        <s:button view="/ClienteEdit.xhtml"
+                    id="edit"
+                 value="Edit"/>
+
+        <s:button view="/#{empty clienteFrom ? 'ClienteList' : clienteFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab>
+        <f:facet name="label">
+            <h:panelGroup><h:graphicImage value="/img/onetomany.gif" style="vertical-align: middle; padding-right: 4px;"/>Ventas</h:panelGroup>
+        </f:facet>
+    <h:form styleClass="association" id="ventasChildren">
+
+        <h:outputText value="There are no ventas associated with this cliente."
+                   rendered="#{empty clienteHome.ventas}"/>
+
+        <rich:dataTable value="#{clienteHome.ventas}"
+                       var="_venta"
+                  rendered="#{not empty clienteHome.ventas}"
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="ventasTable">
+            <rich:column sortBy="#{_venta.id}">
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{_venta.id}"/>
+            </rich:column>
+            <rich:column sortBy="#{_venta.fecha}">
+                <f:facet name="header">Fecha</f:facet>
+                <h:outputText value="#{_venta.fecha}">
+                    <s:convertDateTime type="both" dateStyle="short"/>
+                </h:outputText>
+            </rich:column>
+            <rich:column sortBy="#{_venta.monto}">
+                <f:facet name="header">Monto</f:facet>
+                <h:outputText value="#{_venta.monto}">
+                    <f:convertNumber/>
+                </h:outputText>
+            </rich:column>
+            <h:column>
+                <f:facet name="header">Action</f:facet>
+                <s:link id="selectventa"
+                     value="Select"
+                      view="/Venta.xhtml">
+                    <f:param name="ventaId"
+                            value="#{_venta.id}"/>
+                    <f:param name="ventaFrom" value="Cliente"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+
+    </h:form>
+
+    <div class="actionButtons">
+        <s:button
+               value="Add venta"
+                view="/VentaEdit.xhtml">
+            <f:param name="clienteId"
+                    value="#{clienteHome.instance.id}"/>
+            <f:param name="ventaFrom" value="Cliente"/>
+        </s:button>
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

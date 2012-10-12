@@ -1,0 +1,112 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <rich:panel>
+        <f:facet name="header">Producto Details</f:facet>
+
+
+        <s:decorate id="codigo" template="layout/display.xhtml">
+            <ui:define name="label">Codigo</ui:define>
+            <h:outputText value="#{productoHome.instance.codigo}"/>
+        </s:decorate>
+
+        <s:decorate id="descripcion" template="layout/display.xhtml">
+            <ui:define name="label">Descripcion</ui:define>
+            <h:outputText value="#{productoHome.instance.descripcion}"/>
+        </s:decorate>
+
+        <s:decorate id="nombre" template="layout/display.xhtml">
+            <ui:define name="label">Nombre</ui:define>
+            <h:outputText value="#{productoHome.instance.nombre}"/>
+        </s:decorate>
+
+        <s:decorate id="precio" template="layout/display.xhtml">
+            <ui:define name="label">Precio</ui:define>
+            <h:outputText value="#{productoHome.instance.precio}">
+                <f:convertNumber/>
+            </h:outputText>
+        </s:decorate>
+
+        <div style="clear:both"/>
+
+    </rich:panel>
+
+    <div class="actionButtons">
+
+        <s:button view="/ProductoEdit.xhtml"
+                    id="edit"
+                 value="Edit"/>
+
+        <s:button view="/#{empty productoFrom ? 'ProductoList' : productoFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab>
+        <f:facet name="label">
+            <h:panelGroup><h:graphicImage value="/img/onetomany.gif" style="vertical-align: middle; padding-right: 4px;"/>Detalle ventas</h:panelGroup>
+        </f:facet>
+    <h:form styleClass="association" id="detalleVentasChildren">
+
+        <h:outputText value="There are no detalleVentas associated with this producto."
+                   rendered="#{empty productoHome.detalleVentas}"/>
+
+        <rich:dataTable value="#{productoHome.detalleVentas}"
+                       var="_detalleVenta"
+                  rendered="#{not empty productoHome.detalleVentas}"
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="detalleVentasTable">
+            <rich:column sortBy="#{_detalleVenta.id.idProducto}">
+                <f:facet name="header">Id producto</f:facet>
+                <h:outputText value="#{_detalleVenta.id.idProducto}"/>
+            </rich:column>
+            <rich:column sortBy="#{_detalleVenta.id.idVenta}">
+                <f:facet name="header">Id venta</f:facet>
+                <h:outputText value="#{_detalleVenta.id.idVenta}"/>
+            </rich:column>
+            <rich:column sortBy="#{_detalleVenta.cantidad}">
+                <f:facet name="header">Cantidad</f:facet>
+                <h:outputText value="#{_detalleVenta.cantidad}"/>
+            </rich:column>
+            <h:column>
+                <f:facet name="header">Action</f:facet>
+                <s:link id="selectdetalleVenta"
+                     value="Select"
+                      view="/DetalleVenta.xhtml">
+                    <f:param name="detalleVentaIdProducto"
+                            value="#{_detalleVenta.id.idProducto}"/>
+                    <f:param name="detalleVentaIdVenta"
+                            value="#{_detalleVenta.id.idVenta}"/>
+                    <f:param name="detalleVentaFrom" value="Producto"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+
+    </h:form>
+
+    <div class="actionButtons">
+        <s:button
+               value="Add detalleVenta"
+                view="/DetalleVentaEdit.xhtml">
+            <f:param name="productoId"
+                    value="#{productoHome.instance.id}"/>
+            <f:param name="detalleVentaFrom" value="Producto"/>
+        </s:button>
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

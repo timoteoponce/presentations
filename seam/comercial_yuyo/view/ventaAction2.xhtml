@@ -1,0 +1,93 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:a="http://richfaces.org/a4j"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="ventaAction2Form">
+
+        <rich:panel>
+        <h:panelGrid columns="1">
+            <f:facet name="header">ventaAction2</f:facet>
+
+            <s:decorate id="montoF" template="layout/display.xhtml">
+                <ui:define name="label">Monto:</ui:define>
+                <h:outputText value="#{ventaAction2.newVenta.monto}" />
+            </s:decorate>
+            
+            <s:decorate id="clienteF" template="layout/edit.xhtml">
+                <ui:define name="label">Cliente:</ui:define>
+                <h:selectOneMenu value="#{ventaAction2.newVenta.cliente}"
+                	required="true">
+                	<s:selectItems value="#{ventaAction2.clientes}"
+                		var="_cliente" 
+                		label="#{_cliente.nombre} #{_cliente.apellido}"/>
+                	<s:convertEntity/>
+                	<a:support event="onchange" 
+                		ajaxSingle="true" limitToList="true"
+                		reRender="clienteF,detalleF"/>
+                </h:selectOneMenu>
+            </s:decorate>
+
+            <div style="clear:both"/>
+            
+            <s:decorate id="detalleF" template="layout/edit.xhtml">
+                <ui:define name="label">Agregar producto:</ui:define>
+                <h:selectOneMenu value="#{ventaAction2.newDetalleVenta.producto}"
+                	disabled="#{ventaAction2.newVenta.cliente == null}">
+                	<s:selectItems value="#{ventaAction2.productos}"
+                		var="_prod" noSelectionLabel="---" 
+                		label="#{_prod.nombre} - #{_prod.precio}"/>
+                	<a:support event="onchange" 
+                		ajaxSingle="true" limitToList="true"
+                		reRender="detalleF"/>
+                	<s:convertEntity/>
+                </h:selectOneMenu>
+                <rich:inputNumberSpinner id="cant" value="#{ventaAction2.newDetalleVenta.cantidad}" minValue="1">
+                	<a:support event="onchange" 
+                		ajaxSingle="true" limitToList="true"
+                		reRender="cant"/>
+               </rich:inputNumberSpinner>
+                <a:commandButton action="#{ventaAction2.addDetalleVenta()}" ajaxSingle="true"
+                	value="agregar"
+                	limitToList="true" reRender="detalleF,montoF,tabla"/>
+            </s:decorate>
+            
+            <a:outputPanel ajaxRendered="true">
+            <rich:dataTable id="tabla" value="#{ventaAction2.detalleVenta}" var="_item">
+            	<rich:column>
+            		<f:facet name="header">Producto</f:facet>
+            		#{_item.producto.nombre}
+            	</rich:column>
+            	<rich:column>
+            		<f:facet name="header">Cantidad</f:facet>
+            		#{_item.cantidad}
+            	</rich:column>
+            	<rich:column>
+            		<a:commandButton action="#{ventaAction2.removeDetalleVenta(_item)}" ajaxSingle="true"
+            		value="remover"
+                	limitToList="true" reRender="montoF,tabla"/>		
+            	</rich:column>            	
+            </rich:dataTable>
+            
+			</a:outputPanel>
+		</h:panelGrid>			
+        </rich:panel>
+
+        <div class="actionButtons">
+            <h:commandButton id="ventaAction2" value="guardar venta"
+                    action="#{ventaAction2.guardar()}"/>
+        </div>
+
+    </h:form>
+
+</ui:define>
+
+</ui:composition>

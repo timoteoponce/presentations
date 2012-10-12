@@ -1,0 +1,151 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="cliente" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{clienteHome.managed ? 'Edit' : 'Add'} Cliente</f:facet>
+
+
+
+            <s:decorate id="apellidoField" template="layout/edit.xhtml">
+                <ui:define name="label">Apellido</ui:define>
+                <h:inputTextarea id="apellido"
+                               cols="80"
+                               rows="3"
+                           required="true"
+                              value="#{clienteHome.instance.apellido}"/>
+            </s:decorate>
+
+
+            <s:decorate id="emailField" template="layout/edit.xhtml">
+                <ui:define name="label">Email</ui:define>
+                <h:inputTextarea id="email"
+                               cols="80"
+                               rows="3"
+                              value="#{clienteHome.instance.email}"/>
+            </s:decorate>
+
+
+            <s:decorate id="nombreField" template="layout/edit.xhtml">
+                <ui:define name="label">Nombre</ui:define>
+                <h:inputTextarea id="nombre"
+                               cols="80"
+                               rows="3"
+                           required="true"
+                              value="#{clienteHome.instance.nombre}"/>
+            </s:decorate>
+
+
+            <s:decorate id="saldoField" template="layout/edit.xhtml">
+                <ui:define name="label">Saldo</ui:define>
+                <h:inputText id="saldo"
+                       required="true"
+                          value="#{clienteHome.instance.saldo}"
+                           size="27">
+                    <a:support event="onblur" reRender="saldoField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{clienteHome.persist}"
+                       disabled="#{!clienteHome.wired}"
+                       rendered="#{!clienteHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{clienteHome.update}"
+                       rendered="#{clienteHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{clienteHome.remove}"
+                      immediate="true"
+                       rendered="#{clienteHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/Cliente.xhtml"
+                rendered="#{clienteHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty clienteFrom ? 'ClienteList' : clienteFrom}.xhtml"
+                rendered="#{!clienteHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="Ventas">
+        <h:form styleClass="association" id="ventasChildren">
+
+            <h:outputText value="There are no ventas associated with this cliente."
+                       rendered="#{empty clienteHome.ventas}"/>
+
+            <rich:dataTable value="#{clienteHome.ventas}"
+                           var="_venta"
+                      rendered="#{not empty clienteHome.ventas}"
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="ventasTable">
+                <rich:column sortBy="#{_venta.id}">
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{_venta.id}"/>
+                </rich:column>
+                <rich:column sortBy="#{_venta.fecha}">
+                    <f:facet name="header">Fecha</f:facet>
+                    <h:outputText value="#{_venta.fecha}">
+                        <s:convertDateTime type="both" dateStyle="short"/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_venta.monto}">
+                    <f:facet name="header">Monto</f:facet>
+                    <h:outputText value="#{_venta.monto}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+            </rich:dataTable>
+
+        </h:form>
+
+        <f:subview rendered="#{clienteHome.managed}" id="ventas">
+        <div class="actionButtons">
+            <s:button id="addventa"
+                   value="Add venta"
+                    view="/VentaEdit.xhtml"
+             propagation="none">
+                 <f:param name="clienteId"
+                         value="#{clienteHome.instance.id}"/>
+                 <f:param name="ventaFrom" value="Cliente"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

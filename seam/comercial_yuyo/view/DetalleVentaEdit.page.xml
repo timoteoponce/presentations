@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd"
+      no-conversation-view-id="/DetalleVentaList.xhtml"
+      login-required="true">
+
+   <begin-conversation join="true" flush-mode="MANUAL"/>
+
+   <action execute="#{detalleVentaHome.wire}"/>
+
+   <param name="detalleVentaFrom"/>
+   <param name="detalleVentaIdProducto" value="#{detalleVentaHome.detalleVentaId.idProducto}"/>
+   <param name="detalleVentaIdVenta" value="#{detalleVentaHome.detalleVentaId.idVenta}"/>
+   <param name="productoFrom"/>
+   <param name="productoId" value="#{productoHome.productoId}"/>
+
+   <param name="ventaFrom"/>
+   <param name="ventaId" value="#{ventaHome.ventaId}"/>
+   <param name="clienteFrom"/>
+   <param name="clienteId" value="#{clienteHome.clienteId}"/>
+
+
+
+
+   <navigation from-action="#{detalleVentaHome.persist}">
+      <rule if-outcome="persisted">
+         <end-conversation/>
+         <redirect view-id="/DetalleVenta.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{detalleVentaHome.update}">
+      <rule if-outcome="updated">
+         <end-conversation/>
+         <redirect view-id="/DetalleVenta.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{detalleVentaHome.remove}">
+      <rule if-outcome="removed">
+         <end-conversation/>
+         <redirect view-id="/DetalleVentaList.xhtml"/>
+      </rule>
+   </navigation>
+
+</page>
