@@ -1,0 +1,104 @@
+
+Go
+Un ambiente de programación simple
+28 Nov 2015
+Tags: go
+
+Timoteo Ponce
+Senior Software Developer, Swissbytes Ltda.
+timoteo.ponce@swissbytes.ch
+http://swissbytes.ch/
+@timoteo_ponce
+
+* Un poco de historia
+
+* Go
+
+Motivado por las necesidades de Google
+
+- Simplicidad
+- Eficiencia
+- Seguridad
+- Escalabilidad
+- Concurrencia/Paralelismo
+- Rápido ciclo de desarrollo
+
+* Qué es Go?
+
+- Un proyecto open source (BSD)
+- Un lenguaje de programación multi-paradigma (OO,funcional,procedimental)
+- Un ambiente de ejecución (like JVM, CLR)
+- Un compilador
+- Muchas librerías poderosas
+- Muchas herramientas (build,fetch,document,format)
+- Mucha documentación
+
+* Que es Go?
+
+.play hello.go
+
+
+* Timeline 
+
+- 2009 Lanzamiento público 0.5
+- 2012 Lanzamiento 1.0 
+- 2013 Lanzamiento 1.1, mejora de rendimiento del 40%
+- 2013 Lanzamiento 1.2, mejoras a librerías SQL
+- 2014 Lanzamiento 1.3, bugfixing
+- 2014 Lanzamiento 1.4, mejoras a librerías de red
+- 2015 Lanzamiento 1.5, mejoras al ambiente y entorno de ejecución 
+
+* Diseño
+
+Go esta diseñado para ser:
+
+- Ligero, evitando repeticiones innecesarias
+- Orientado a objetos, pero no en la forma usual
+- Concurrente, de una forma que te mantiene cuerdo
+- Robusto, de una forma segura
+
+* Principios
+
+* Principios: Codigo simple y corto
+TODO
+
+* Principios: Integración con librerias
+TODO
+
+* Principios: OO con composiciones
+
+Go es OO pero no en la forma usual
+
+- no existen clases, sino tipos de datos con comportamiento
+- no hay herencia
+- interfaces dinámicas
+
+*Resultado*: Pequeñas piezas conectadas a través de pequeñas interfaces
+
+* Principios: Concurrencia
+
+Go provee un sistema de concurrencia diferente
+
+- Routines en vez de hilos
+- Channels y Queues en vez de synchronized
+
+*Resultado*: Código concurrente seguro
+
+* Herramientas
+
+* Herramientas
+
+Go define un entorno de desarrollo completo
+
+- go run
+- go get
+- go build
+- go install
+- go fmt
+
+* Pruebas
+
+- go test
+
+
+* Preguntas?
