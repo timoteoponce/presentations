@@ -37,6 +37,15 @@ Motivado por las necesidades de Google
 
 .play hello.go
 
+* Que es Go?
+
+.play hello2.go
+
+* Que es Go?
+
+.play hello3.go
+
+
 
 * Timeline 
 
@@ -60,18 +69,65 @@ Go esta diseñado para ser:
 * Principios
 
 * Principios: Codigo simple y corto
-TODO
+
+Go es un lenguaje sencillo de leer y de interpretars
+
+- lenguaje corto e integrado
+- características esenciales y estables
+
+  Production  = production_name "=" [ Expression ] "." .
+  Expression  = Alternative { "|" Alternative } .
+  Alternative = Term { Term } .
+  Term        = production_name | token [ "…" token ] | Group | Option | Repetition .
+  Group       = "(" Expression ")" .
+  Option      = "[" Expression "]" .
+  Repetition  = "{" Expression "}" .
+  |   alternation
+  ()  grouping
+  []  option (0 or 1 times)
+  {}  repetition (0 to n times)
+
+*Resultado*: Puedes mantener el lenguaje en tu cabeza sin mucho esfuerzo
 
 * Principios: Integración con librerias
-TODO
+
+Go es un lenguaje que no necesita manejo externo de librerías
+
+- Las librerías se definen e importan automáticamente en código
+- Incluye librerías de alta gama
+
+  package main
+
+  import (
+    "fmt"
+    "os"
+    "github.com/tealeg/xlsx"
+  )
+  
+  func main(){
+    ...
+  }
+
+*Resultado*: Las aplicaciones son cortas y bien especificadas, incluyendo
+sus dependencias externas
 
 * Principios: OO con composiciones
 
 Go es OO pero no en la forma usual
 
 - no existen clases, sino tipos de datos con comportamiento
-- no hay herencia
-- interfaces dinámicas
+- no hay herencia, sino datos con comportamiento
+
+  type LoginData struct {
+    name string
+    password string
+  }
+
+  func (r *ReportData) Hash() string {
+    return md5.Sum(string + password)
+  }
+
+  hash = LoginData{name:"timo", password: "123"}.Hash()
 
 *Resultado*: Pequeñas piezas conectadas a través de pequeñas interfaces
 
@@ -82,7 +138,9 @@ Go provee un sistema de concurrencia diferente
 - Routines en vez de hilos
 - Channels y Queues en vez de synchronized
 
-*Resultado*: Código concurrente seguro
+.play routine.go /^func main/,/^}/
+
+*Resultado*: Código concurrente simple y seguro
 
 * Herramientas
 
