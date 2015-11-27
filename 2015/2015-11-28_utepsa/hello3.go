@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	loginfo := func(strt string) {
+	loginfo := func(str string) {
 		fmt.Printf("INFO %s", str)
 	}
 

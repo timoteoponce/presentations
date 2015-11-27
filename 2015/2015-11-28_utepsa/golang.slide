@@ -25,6 +25,18 @@ Motivado por las necesidades de Google
 
 * Qué es Go?
 
+
+Go es un lenguaje de programación open source que facilita la creación de software:
+
+
+- Simple
+- Confiable
+- Eficiente
+
+.image gopher1.jpg
+
+* Qué es Go?
+
 - Un proyecto open source (BSD)
 - Un lenguaje de programación multi-paradigma (OO,funcional,procedimental)
 - Un ambiente de ejecución (like JVM, CLR)
@@ -37,15 +49,28 @@ Motivado por las necesidades de Google
 
 .play hello.go
 
+- C-family
+- Compilado a código nativo
+- Soporte nativo de UTF-8, concurrencia, interfaces, JSON...
+
 * Que es Go?
 
 .play hello2.go
+
+- Sintáctica y semánticamente simple
+- Tipos y compilados estáticos
 
 * Que es Go?
 
 .play hello3.go
 
+- Estructurado
+- Funcional
+- Orientado a objetos (Alan Kay style)
 
+* Cómo se ve un programa Go?
+
+.image disposition.jpg 550 _
 
 * Timeline 
 
@@ -68,12 +93,12 @@ Go esta diseñado para ser:
 
 * Principios
 
-* Principios: Codigo simple y corto
+* Principios: Codigo simple y conciso
 
-Go es un lenguaje sencillo de leer y de interpretars
+Go es un lenguaje sencillo de leer y de interpretar
 
-- lenguaje corto e integrado
-- características esenciales y estables
+#- lenguaje corto e integrado
+#- características esenciales y estables
 
   Production  = production_name "=" [ Expression ] "." .
   Expression  = Alternative { "|" Alternative } .
@@ -89,12 +114,25 @@ Go es un lenguaje sencillo de leer y de interpretars
 
 *Resultado*: Puedes mantener el lenguaje en tu cabeza sin mucho esfuerzo
 
+* Principios: Codigo simple y conciso
+Main.java
+
+  package main;
+  public class Main{
+    public static void main(String[] args){
+      System.out.println("Hello");
+    }
+  }
+
+hello.go
+
+.play hello.go
+
 * Principios: Integración con librerias
 
 Go es un lenguaje que no necesita manejo externo de librerías
 
 - Las librerías se definen e importan automáticamente en código
-- Incluye librerías de alta gama
 
   package main
 
@@ -115,7 +153,7 @@ sus dependencias externas
 
 Go es OO pero no en la forma usual
 
-- no existen clases, sino tipos de datos con comportamiento
+- no existen clases ni herencias, sino tipos de datos con comportamiento
 - no hay herencia, sino datos con comportamiento
 
   type LoginData struct {
@@ -142,6 +180,23 @@ Go provee un sistema de concurrencia diferente
 
 *Resultado*: Código concurrente simple y seguro
 
+* Principios: Manejo de errores, no excepciones
+
+Go quiere que tus programas sean estables
+
+- No existen excepciones, sino errores
+- Los errores deben manejarse explícitamente
+
+.play readfile.go /^func main/,/^}/
+
+* Principios: Las pruebas son esenciales
+
+- go test
+
+.code tests/readfile.go  /^func Sinonimo/,/^}/
+
+.code tests/readfile_test.go /^func TestSinonimo/,/^}/
+
 * Herramientas
 
 * Herramientas
@@ -153,10 +208,6 @@ Go define un entorno de desarrollo completo
 - go build
 - go install
 - go fmt
-
-* Pruebas
-
-- go test
 
 
 * Preguntas?
