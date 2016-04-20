@@ -5,7 +5,7 @@ Un ambiente de programación simple
 Tags: go
 
 Timoteo Ponce
-Senior Software Developer, Swissbytes Ltda.
+Software Developer, Swissbytes Ltda.
 timoteo.ponce@swissbytes.ch
 http://swissbytes.ch/
 @timoteo_ponce
@@ -22,6 +22,10 @@ Motivado por las necesidades de Google
 - Escalabilidad
 - Concurrencia/Paralelismo
 - Rápido ciclo de desarrollo
+
+* Autores
+
+.image team.jpg
 
 * Qué es Go?
 
@@ -204,10 +208,42 @@ Go quiere que tus programas sean estables
 Go define un entorno de desarrollo completo
 
 - go run
-- go get
-- go build
-- go install
-- go fmt
 
+  Compilar y ejecutar el programa principal
+
+- go get
+
+  Recolectar dependencias
+
+- go build
+
+  Construir un paquete binario nativo
+
+- go install
+
+  Instalar el paquete binario nativo en el sistema local
+
+#- go fmt
+#  Dar formato a los archivos de código fuente
+
+* Quiénes lo usan?
+
+- Google
+- BBC
+- Bitbucket
+- Github
+- Cloud foundry
+- Dropbox
+- Facebook
+- Heroku
+- Intel
+- Twitter
+
+* Y una cosa mas
+
+
+   Go Mobile
+
+Y muchos mas https://github.com/golang/go/wiki/GoUsers
 
 * Preguntas?
