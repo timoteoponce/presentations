@@ -1,0 +1,701 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="./reveal.js/css/theme/black.css">
+    <link rel="stylesheet" href="./reveal.js/lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? './reveal.js/css/print/pdf.css' : './reveal.js/css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section >
+          <h1>Tesis de grado</h1>
+          <h4>Mejora de correctitud en el desarrollo
+            de sistemas de software, aplicando el paradigma de
+            desarrollo en roles DCI</h4>
+          <p>
+          <small>Por: Timoteo Ponce Ortiz</small>
+          </p>
+        </section>
+
+        <section data-background="#b5533c">
+          <section>
+            <h2>Problema</h2>
+          </section>
+
+          <section>
+            <h3>Aproximadamente 300 millones de usuarios de
+              MSWord en el mundo</h3>
+          </section>
+
+          <section>
+            <h3>Aproximadamente 40 millones de documentos
+              creados cada día</h3>
+          </section>
+
+          <section>
+            <h3>Millones de ellos contienen imágenes</h3>
+            <p class="fragment">localizadas y personalizadas</p>
+            <p class="fragment">y alguien cambia el tamaño de página</p>
+            <p class="fragment">...</p>
+            <p class="fragment">y ahora hay millones de problemas</p>
+          </section>
+
+          <section data-background="img/blackboard.gif">
+
+            <div style="display: flex;justify-content: center;">
+              <img src="img/file.png" height="300" style="background:none; border:none; box-shadow:none;">
+              <div style="align-self: center;">
+                <img src="img/back.png" height="150" style="background:none; border:none; box-shadow:none;"/>
+                <img src="img/forward.png" height="150" style="background:none; border:none; box-shadow:none;"/>
+              </div>
+              <img src="img/user_03.png" height="300" style="background:none; border:none; box-shadow:none;">
+            </div>
+            <div class="fragment" style="display: flex;justify-content: center;">
+              <img src="img/api.png" height="200" style="background:none; border:none; box-shadow:none;">
+              <div style="align-self: center;">
+                <img src="img/back.png" height="100" style="background:none; border:none; box-shadow:none;"/>
+                <img src="img/forward.png" height="100" style="background:none; border:none; box-shadow:none;"/>
+              </div>
+              <img src="img/letter.png" height="200" style="background:none; border:none; box-shadow:none;">
+            </div>
+          </section>
+
+          <section>
+            <h2>El problema</h2>
+            <p class="fragment">Inconsistencia entre que el usuario quiere y lo que el programa hace</p>
+            <p class="fragment">Necesidad constante de modificar el programa</p>
+            <p class="fragment">Costos elevados de soporte/mantenimiento</p>
+            <p class="fragment">Costos elevados de desarrollo/Ingresos reducidos</p>
+          </section>
+
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Solución propuesta</h2>
+          </section>
+          <section>
+            <h2>Situación deseada</h2>
+            <p class="fragment">Programas consistentes con lo que los usuarios esperan</p>
+            <p class="fragment">Programas flexibles para evolucionar</p>
+            <p class="fragment">Reducir costos de desarrollo</p>
+          </section>
+
+          <section>
+            <h2>Técnicas propuestas</h2>
+            <!--<p class="fragment">Programación Orientada a objetos</p>-->
+            <p class="fragment">Diseño guiado por responsabilidades</p>
+            <p class="fragment">Diseño guiado por comportamiento</p>
+            <p class="fragment"><b>Datos, Contextos e Interacciones (DCI)</b></p>
+          </section>
+
+          <section>
+            <h3>DCI - Datos, Contextos e Interacciones (Intro)</h3>
+            <ul>
+              <li>Modelo arquitectónico + paradigma de desarrollo</li>
+              <li>Basado en conceptos de comunicación humana</li>
+              <li>Legible y reutilizable</li>
+              <li>Propuesto por Trygve Reenskaug (MVC)</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Motivación</h2>
+            <p>Nuestros problemas pueden ser resueltos usando <b>DCI</b></p>
+            <p class="fragment">DCI es una arquitectura conceptual</p>
+            <p class="fragment">Carece de herramientas que permitan su aplicación</p>
+          </section>
+
+        </section>
+
+        <section data-background="#336666">
+          <section>
+            <h2>Objetivo del trabajo</h2>
+          </section>
+
+          <section style="font-weight: bold;font-size: 45px;">            
+            <p>Mejorar la correctitud en el desarrollo de sistemas de software,</p>
+            <p style="color: #c8e6c9;">aplicando el paradigma de desarrollo basado en roles DCI,</p>
+            <p style="color: #cfd8dc;">a través de la elaboración de un arquetipo de desarrollo</p>
+          </section>
+
+          <section>
+            <h2>Objetivos específicos</h2>
+            <ul>
+              <li>Localizar el trabajo para el entorno de Swissbytes</li>
+              <li class="fragment">Definir indicadores de desarrollo</li>
+              <li class="fragment">Elaborar arquetipo DCI</li>
+              <li class="fragment">Elaborar prototipo DCI</li>
+              <li class="fragment">Evaluar prototipo con indicadores</li>
+              <li class="fragment">Analizar ventajas-desventajas del prototipo</li>
+            </ul>
+          </section>
+        </section>
+
+
+        <section data-background="#336699">
+          <section>
+            <h2>DCI</h2>
+          </section>
+
+          <section>
+            <h2>DCI</h2>
+            <img src="img/dci_schema.png" style="background: white;height: 40%;"/>
+            <p><i>
+              DCI es una esquema de diseño que a través de elementos naturales de la
+              comunicación, permite reflejar el comportamiento de una aplicación
+              de software hacia los usuarios finales.
+            </i></p>
+          </section>
+
+          <section>
+            <h3>En DCI un sistema se define por..</h3>
+            <div class="fragment">
+              <p>lo que es</p>
+              <p>lo que hace</p>
+            </div>
+            <div class="fragment">
+              <p><b>lo que es:</b> lo que es estable y no cambia</p>
+              <p><b>lo que hace:</b> lo que es dinámico y cambia frecuentemente</p>
+            </div>
+          </section>
+
+          <section>
+            <h2>DCI - ejemplo</h2>
+            <div style="display: flex;justify-content: center;">
+              <img src="img/user_03.png" height="300" />
+              <div style="padding-left: 25px;">
+                <ul>
+                  <li>ADN</li>
+                  <li>Huella digital</li>
+                  <li>Tipo de sangre</li>
+                </ul>
+                <h3 class="fragment">DATOS</h3>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>DCI - ejemplo</h2>
+            <div style="display: flex;justify-content: center;">
+              <img src="img/user_05.png" height="300" />
+              <div style="padding-left: 25px;">
+                <ul>
+                  <li>Administrador</li>
+                  <li>Madre de familia</li>
+                  <li>Conductora</li>
+                </ul>
+                <h3 class="fragment">ROLES</h3>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>DCI - ejemplo</h2>
+            <div style="display: flex;justify-content: center;">
+              <img src="img/user_05.png" height="300" />
+              <div style="padding-left: 25px;">
+                <ul>
+                  <li>Administrador &gt; Oficina</li>
+                  <li>Madre de familia &gt; Casa</li>
+                  <li>Conductora &gt; Carretera</li>
+                </ul>
+                <h3 class="fragment">CONTEXTOS</h3>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <table style="color: white;">
+              <thead>
+                <tr>
+                  <th>Datos</th>
+                  <th>Contextos</th>
+                  <th>Roles</th>
+                  <th>Interacciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dabeyba</td>
+                  <td>Oficina</td>
+                  <td>Contadora</td>
+                  <td>Cajeros, Vendedores</td>
+                </tr>
+                <tr>
+                  <td>Tobias</td>
+                  <td>Casa</td>
+                  <td>Padre de familia</td>
+                  <td>Hijos, Esposa</td>
+                </tr>
+                <tr>
+                  <td>Julio</td>
+                  <td>Calle</td>
+                  <td>Mago</td>
+                  <td>Padres de familia, payasos</td>
+                </tr>
+                <tr>
+                  <td>Rory</td>
+                  <td>Casa</td>
+                  <td>Cocinero</td>
+                  <td>Esposa...ella manda</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <p>Daveyba quiere realizar su declaración de impuestos
+            como trabajador dependendiente durante el día, y como
+            trabajador independiente cuando trabaja desde casa en
+            las noches.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="fragment">DCI &#8594; Caso de uso </h3>
+            <table style="color: white;">
+              <tr>
+                <th>Objetivo</th>
+                <td>Realizar declaración de impuestos mensual</td>
+              </tr>
+              <tr>
+                <th>Roles</th>
+                <td>Trabajador independiente</td>
+              </tr>
+              <tr>
+                <th>Pre-condiciones</th>
+                <td>
+                  <ul>
+                    <li>Realizar su declaración fuera de horarios de oficina</li>
+                    <li>Cumplir con un monto mínimo de ingresos</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Acciones</th>
+                <td>
+                  <ul>
+                    <li>....</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>Post-condiciones</th>
+                <td>....</td>
+              </tr>
+              <tr>
+              </tr>
+            </table>
+
+          </section>
+
+          <section data-background="img/blackboard.gif">
+            <img src="img/dci_01.jpg" alt="" height="600"/>
+          </section>
+          <section data-background="img/blackboard.gif">
+            <img src="img/dci_02.jpg" alt="" height="600"/>
+          </section>
+          <section data-background="img/blackboard.gif">
+            <img src="img/dci_03.jpg" alt="" height="600"/>
+          </section>
+          <section>
+            <img src="img/dci_04.jpg" alt="" height="400"/>
+          </section>
+
+          <section>
+            <img src="img/dci_04.jpg" alt="" height="200"/>
+            <pre>
+            <code class="ruby">
+              context ComprobanteFinancieroContext{
+
+                def execute(context, userName, periodo)={
+                  def contador = findBy("name",userName) with ContadorRole
+                  def service = context.inject ReportesService.class
+                  def report = service.generarComprobante(contador,periodo)
+
+                  if contador.balance(report) == STABLE {
+                    service.consolidarReporte report
+                    contex.log "Reporte diario para $periodo consolidado"
+                    return Results.SUCCESS
+                  }
+                  return Results.FAILURE
+                }
+
+              }
+            </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Requerimientos DCI</h2>
+            <ul>
+              <li>Compatible con ambientes de producción Java</li>
+              <li>Programación multi-paradigma</li>
+              <li>Modelo computacional dinámico</li>
+              <li>Composición de objetos</li>
+              <li>Contextos independientes de ejecución</li>
+            </ul>
+          </section>
+          <section>
+            <h1>Scala</h1>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Arquetipo de desarrollo</h2>
+          </section>
+
+          <section>
+            <h2>Arquetipo de desarrollo</h2>
+            <ul class="fragment">
+              <li>Desarrollado como plantilla para ambientes Java</li>
+              <li>Orientado a la integración</li>
+              <li>Basado en estándares</li>
+              <li>Basado en componentes de producción reales</li>
+              <li>Proyecto público open-source</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Arquitectura conceptual</h2>
+            <img src="img/design_main_arch_02.png" alt="" />
+          </section>
+
+
+          <section>
+            <h2>Arquitectura de componentes</h2>
+            <img src="img/design_main_arch_04.png" alt="" />
+          </section>
+
+          <section>
+            <h2>Notas del proceso de desarrollo</h2>
+            <p class="fragment">XP + Scrum</p>
+            <p class="fragment">3 entregas, 4 meses</p>
+            <p class="fragment">Integración continua</p>
+            <p class="fragment">Medición continua</p>
+          </section>
+
+          <section>
+            <div style="display: block-inline;">
+              <div style="float: left; width: 40%;margin-top: 25%;">
+                <h2>Arquetipo DCI</h2>
+
+              </div>
+              <div style="float: left; width: 60%;">
+                <img src="img/repo_snapshot.png" alt=""/>
+              </div>
+            </div>
+          </section>
+
+
+        </section>
+        <section data-background="#006666">
+          <section>
+            <h2>Prototipo DCI</h2>
+          </section>
+
+          <section>
+            <table style="color: white;">
+              <thead>
+                <tr>
+                  <th>Categoría</th>
+                  <th>LOC</th>
+                  <th>Equipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Small - Pequeño</td>
+                  <td>5000 &#8594; 20000</td>
+                  <td>1 &#8594; 2</td>
+                </tr>
+                <tr>
+                  <td>Average - Mediano</td>
+                  <td>20000 &#8594; 100000</td>
+                  <td>3 &#8594; 5</td>
+                </tr>
+                <tr>
+                  <td>Large - Grande</td>
+                  <td>100000 &#8594; 300000</td>
+                  <td>5 &#8594; 10</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>Métricas</h2>
+            <table style="color: white;">
+              <tbody>
+                <tr>
+                  <th><u>Dinámicas</u></th>
+                  <td>Tiempo de actividad, versiones publicadas, peticiones completadas,
+                    peticiones pendientes, tiempo resolución petición
+                  </td>
+                </tr>
+                <tr>
+                  <th><u>Estáticas</u></th>
+                  <td>Archivos, líneas de código, código documentado, cobertura de pruebas,
+                    complejidad ciclomática, tiempo de respuesta, latencia, uso de memoria
+                  </td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>CECAggregation</h2>
+            <img src="img/prototype_app_01.png" alt="" />
+          </section>
+
+          <section>
+            <h2>CECAggregation</h2>
+            <table style="color:white; font-size: 20px;">
+              <tbody>
+                <tr>
+                  <th>Actividad en producción</th>
+                  <td>38 meses</td>
+                  <th>LOC</th>
+                  <td>9628</td>
+                </tr>
+                <tr>
+                  <th>Versiones publicadas</th>
+                  <td>4</td>
+                  <th>Código documentado</th>
+                  <td>65&#37;</td>
+                </tr>
+                <tr>
+                  <th>Peticiones resueltas</th>
+                  <td>120</td>
+                  <th>Complejidad</th>
+                  <td>17.8</td>
+                </tr>
+                <tr>
+                  <th>Peticiones activas</th>
+                  <td>35</td>
+                  <th>Cobertura de pruebas</th>
+                  <td>77&#37;</td>
+                </tr>
+                <tr>
+                  <th>Resolución petición</th>
+                  <td>2 días</td>
+                  <th>Tiempo de respuesta</th>
+                  <td>250ms</td>
+                </tr>
+                <tr>
+                  <th>Archivos</th>
+                  <td>112</td>
+                  <th>Uso de memoria</th>
+                  <td>29696 KB</td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>CECAggregation - DCI</h2>
+            <img src="img/comparison_prototype_01.png" style="height: 50%;" alt="" />
+            <p class="fragment">XP + Scrum</p>
+            <p class="fragment">8 entregas, 2 lanzamientos, 2 meses</p>
+          </section>
+
+          <section>
+            <h2>CECAggregation - DCI: Métricas</h2>
+            <table style="color: white;font-size: 22px;">
+              <thead>
+                <tr>
+                  <th>Métrica</th>
+                  <th>Original</th>
+                  <th>DCI</th>
+                  <th>Delta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Archivos</th>
+                  <td>112</td>
+                  <td>74</td>
+                  <td>30 (34&#37;)</td>
+                </tr>
+                <tr>
+                  <th>LOC</th>
+                  <td>9628</td>
+                  <td>5667</td>
+                  <td>3961 (41&#37;)</td>
+                </tr>
+                <tr>
+                  <th>Código documentado</th>
+                  <td>65&#37;</td>
+                  <td>idem</td>
+                  <td>idem</td>
+                </tr>
+                <tr>
+                  <th>Complejidad</th>
+                  <td>17.8</td>
+                  <td>12.4</td>
+                  <td>5.4 (30&#37;)</td>
+                </tr>
+                <tr>
+                  <th>Cobertura de pruebas</th>
+                  <td>77%</td>
+                  <td>idem</td>
+                  <td>idem</td>
+                </tr>
+                <tr>
+                  <th>Tiempo de respuesta</th>
+                  <td>250ms</td>
+                  <td>270ms</td>
+                  <td>-8&#37;</td>
+                </tr>
+                <tr>
+                  <th>Uso de memoria</th>
+                  <td>29696 KB</td>
+                  <td>33792 KB</td>
+                  <td>-13&#37;</td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>CECAggregation - DCI: Indicadores</h2>
+            <table style="color: white;font-size: 22px;">
+              <thead>
+                <tr>
+                  <th>Indicadores</th>
+                  <th>Original</th>
+                  <th>DCI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Desviación de estimación</th>
+                  <td>10</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <th>Desviación de entrega</th>
+                  <td>5</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <th>Errores por iteración</th>
+                  <td>23</td>
+                  <td>17</td>
+                </tr>
+                <tr>
+                  <th>Errores por lanzamiento</th>
+                  <td>14</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <th>Tiempo de arreglo de errores</th>
+                  <td>5</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th>Tiempo de aplicación de cambios</th>
+                  <td>7</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <th>Tareas de soporte por lanzamiento</th>
+                  <td>28</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <th>Retorno de inversión perdido</th>
+                  <td>20</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>CECAggregation - DCI</h2>
+            <p class="fragment">
+            Aplicación reducida
+            </p>
+            <p class="fragment">
+            Revisiones de código positivas
+            </p>
+            <p class="fragment">
+            Complejidad reducida
+            </p>
+            <p class="fragment">
+            Completamente compatible
+            </p>
+
+
+          </section>
+        </section>
+
+        <section data-background="#4d7e65">
+          <section>
+            <h2>Resultados</h2>
+            <p class="fragment">Costos de desarrollo reducidos</p>
+            <p class="fragment">Reducción de tiempos de soporte</p>
+            <p class="fragment">Reducción de complejidad</p>
+            <p class="fragment">Intencionalidad del código incrementada</p>
+          </section>
+          <section>
+            <h2>Resultados Inesperados</h2>
+            <p>Lenguaje de programación Trygve           
+            <small>
+              <blockquote>
+                The trygve language project - Building a DCI-centric language from the ground up
+              </blockquote>
+            </small>
+            </p>
+            <a href="http://github.com/jcoplien/trygve/src/master/README.md">http://github.com/jcoplien/trygve/src/master/README.md</a>
+            <p class="fragment">
+              Scala como lenguaje base de nuevos componentes
+            </p>
+            <p class="fragment">
+              Casos de uso como reemplazo de user-stories
+            </p>
+          </section>
+          <section>
+            <h2>Recomendaciones</h2>
+            <p class="fragment">Incluir soporte Trygve en el arquetipo</p>
+            <p class="fragment">Incluir soporte de micro-services</p>
+            <p class="fragment">Incluir integración del modelo de concurrencia de Actores</p>
+          </section>
+        </section>
+
+        <section>
+          <h1>Gracias!!</h1>
+        </section>
+
+      </div>
+    </div>
+    <script src="./reveal.js/js/reveal.js"></script>
+    <script>
+Reveal.initialize({
+  slideNumber: true,
+  progress: true,
+  history: true,
+  center: true,
+});
+    </script>
+  </body>
+</html>
