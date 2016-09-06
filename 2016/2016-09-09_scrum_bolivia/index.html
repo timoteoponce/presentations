@@ -17,14 +17,96 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
     <div class="reveal">
       <div class="slides">
         <section >
-          <h1>Tesis de grado</h1>
-          <h4>Mejora de correctitud en el desarrollo
-            de sistemas de software, aplicando el paradigma de
-            desarrollo en roles DCI</h4>
+          <h1>Datos Contextos e Interacciones</h1>
+          <h5>Arquitectura + Paradigma de desarrollo</h5>
           <p>
           <small>Por: Timoteo Ponce Ortiz</small>
           </p>
         </section>
+
+        <section>
+          <h2>Agenda</h2>
+          <ul>
+            <li>Simplicidad</li>
+            <li>Problema</li>
+            <li>Arquitectura</li>
+            <li>Arquitectura DCI</li>
+          </ul>
+        </section>
+
+
+        <!-- ##################################### -->
+        <!--                SIMPLICIDAD            -->
+        <!-- ##################################### -->
+
+        <section>
+          <h2>La simplicidad es un pre-requisito para la confiabilidad</h2>
+          <p class="fragment">
+            <small>Edsger W. Dijkstra</small>
+          </p>
+        </section>
+
+        <section>
+          <h2>Comparativa</h2>
+          <table style="color: white;">
+            <thead>
+              <tr>
+                <th>Simple</th>
+                <th>Complejo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Un elemento</td>
+                <td>Múltiples elementos</td>
+              </tr>
+              <tr>
+                <td>Relacionable, ortogonal, cardinal</td>
+                <td>Disperso, difuso, no relacionado</td>
+              </tr>
+              <tr>
+                <td>Un nivel, una jerarquía</td>
+                <td>Múltiples niveles, muchas jerarquías</td>
+              </tr>
+            </tbody>
+          </table>
+          <h2 class="fragment">Valor objetivo!!</h2>
+        </section>
+
+        <section>
+          <h2>Facilidad</h2>
+          <ul>
+            <li class="fragmet">Cercano, a la mano</li>
+            <li class="fragment">A nuestro alcance</li>
+            <li class="fragment">Familiar</li>
+            <li class="fragment">Rápido</li>
+          </ul>
+          <h2 class="fragment">Valor subjetivo!!</h2>
+        </section>
+
+        <section>
+          <h2>Comparativa</h2>
+          <ul>
+            <li class="fragment highlight-red" data-fragment-index="1">Aprender Español</li>
+            <li class="fragment data-fragment-index="1"">Aprender Inglés</li>
+          </ul>
+        </section>
+
+        <section data-background-image="img/petty.jpg">
+        </section>
+
+        <section>
+          <h2>Beneficios/Desventajas</h2>
+          <ul>
+            <li class="fragment">Complejidad ofusca entendimiento</li>
+            <li class="fragment">Simplicidad es una opción</li>
+            <li class="fragment">Simplicidad reduce el costo de cambios</li>
+            <li class="fragment">Simplicidad brinda oportunidades</li>
+          </ul>
+        </section>
+
+        <!-- ##################################### -->
+        <!-- ##################################### -->
 
         <section data-background="#b5533c">
           <section>
@@ -80,72 +162,73 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         </section>
 
+        <!-- ##################################### -->
+        <!--                ARQUITECTURA           -->
+        <!-- ##################################### -->
+        <section data-background-image="img/archs.jpeg">
+          <h1>Arquitectura</h1>
+        </section>
+
         <section>
-          <section>
-            <h2>Solución propuesta</h2>
-          </section>
-          <section>
-            <h2>Situación deseada</h2>
-            <p class="fragment">Programas consistentes con lo que los usuarios esperan</p>
-            <p class="fragment">Programas flexibles para evolucionar</p>
-            <p class="fragment">Reducir costos de desarrollo</p>
-          </section>
-
-          <section>
-            <h2>Técnicas propuestas</h2>
-            <!--<p class="fragment">Programación Orientada a objetos</p>-->
-            <p class="fragment">Diseño guiado por responsabilidades</p>
-            <p class="fragment">Diseño guiado por comportamiento</p>
-            <p class="fragment"><b>Datos, Contextos e Interacciones (DCI)</b></p>
-          </section>
-
-          <section>
-            <h3>DCI - Datos, Contextos e Interacciones (Intro)</h3>
-            <ul>
-              <li>Modelo arquitectónico + paradigma de desarrollo</li>
-              <li>Basado en conceptos de comunicación humana</li>
-              <li>Legible y reutilizable</li>
-              <li>Propuesto por Trygve Reenskaug (MVC)</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>Motivación</h2>
-            <p>Nuestros problemas pueden ser resueltos usando <b>DCI</b></p>
-            <p class="fragment">DCI es una arquitectura conceptual</p>
-            <p class="fragment">Carece de herramientas que permitan su aplicación</p>
-          </section>
-
+          <h2>Definición</h2>
+          <h3><i>Estructura en el más alto nivel de abstracción,
+              definiendo componentes, sus dependencias
+              y la forma en que estos interactúan entre sí</i>
+          </h3>
+          <p><small>(Booch, 2009)</small></p>
         </section>
 
-        <section data-background="#336666">
-          <section>
-            <h2>Objetivo del trabajo</h2>
-          </section>
-
-          <section style="font-weight: bold;font-size: 45px;">            
-            <p>Mejorar la correctitud en el desarrollo de sistemas de software,</p>
-            <p style="color: #c8e6c9;">aplicando el paradigma de desarrollo basado en roles DCI,</p>
-            <p style="color: #cfd8dc;">a través de la elaboración de un arquetipo de desarrollo</p>
-          </section>
-
-          <section>
-            <h2>Objetivos específicos</h2>
-            <ul>
-              <li>Localizar el trabajo para el entorno de Swissbytes</li>
-              <li class="fragment">Definir indicadores de desarrollo</li>
-              <li class="fragment">Elaborar arquetipo DCI</li>
-              <li class="fragment">Elaborar prototipo DCI</li>
-              <li class="fragment">Evaluar prototipo con indicadores</li>
-              <li class="fragment">Analizar ventajas-desventajas del prototipo</li>
-            </ul>
-          </section>
+        <section>
+          <h2>Importancia</h2>
+          <ul>
+            <li class="fragment">Nosotros creamos sistemas</li>
+            <li class="fragment">Los sistemas se basan en requerimientos</li>
+            <li class="fragment">Los sistemas tienen un costo</li>
+            <li class="fragment">Los requerimientos cambian con el tiempo</li>
+          </ul>
         </section>
 
+        <section>
+          <h2 class="fragment">Necesitamos diseñar sistemas que puedan cambiar</h2>
+          <h2 class="fragment">Necesitamos agilidad</h2>
+        </section>
+
+        <section>
+          <h2>Beneficios/Desventajas</h2>
+          <ul>
+            <li class="fragment">Falta de arquitectura ofusca entendimiento</li>
+            <li class="fragment">Arquitectura no debería ser opcional</li>
+            <li class="fragment">Arquitectura reduce el costo de cambios</li>
+            <li class="fragment">Arquitectura brinda oportunidades</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Qué tenemos a disposición?</h2>
+          <ul>
+            <li>Responsibility Driven Design (Wirfs-Brock)</li>
+            <li>Domain Driven Design (Evans)</li>
+            <li>Evolutional Design (Jeffries)</li>
+          </ul>
+          <h3 class="fragment">Objetivo: Reducir/Manejar complejidad</h3>
+        </section>
+
+        <section>
+          <h2>Qué problemas tienen todas estas aproximaciones?</h2>
+          <ul>
+            <li class="fragment">Son esquemas para definir sistemas</li>
+            <li class="fragment">Intentan acercarse al modelo mental de usuarios</li>
+            <li class="fragment">Orientados a particionar</li>
+          </ul>
+        </section>
+
+        <!-- ##################################### -->
+        <!-- ##################################### -->
 
         <section data-background="#336699">
           <section>
             <h2>DCI</h2>
+            <img src="img/trygve.jpg" alt="" style="height: 85%;"/>
           </section>
 
           <section>
@@ -338,348 +421,27 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           <section>
             <h2>Requerimientos DCI</h2>
             <ul>
-              <li>Compatible con ambientes de producción Java</li>
               <li>Programación multi-paradigma</li>
               <li>Modelo computacional dinámico</li>
               <li>Composición de objetos</li>
               <li>Contextos independientes de ejecución</li>
             </ul>
           </section>
+
           <section>
-            <h1>Scala</h1>
+            <p>Scala</p>
+            <p class="fragment">Ruby</p>
+            <p class="fragment">Python</p>
+            <p class="fragment">Java: Qi4j</p>
+            <p class="fragment">Java: Trygve</p>
           </section>
         </section>
 
         <section>
-          <section>
-            <h2>Arquetipo de desarrollo</h2>
-          </section>
-
-          <section>
-            <h2>Arquetipo de desarrollo</h2>
-            <ul class="fragment">
-              <li>Desarrollado como plantilla para ambientes Java</li>
-              <li>Orientado a la integración</li>
-              <li>Basado en estándares</li>
-              <li>Basado en componentes de producción reales</li>
-              <li>Proyecto público open-source</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>Arquitectura conceptual</h2>
-            <img src="img/design_main_arch_02.png" alt="" />
-          </section>
-
-
-          <section>
-            <h2>Arquitectura de componentes</h2>
-            <img src="img/design_main_arch_04.png" alt="" />
-          </section>
-
-          <section>
-            <h2>Notas del proceso de desarrollo</h2>
-            <p class="fragment">XP + Scrum</p>
-            <p class="fragment">3 entregas, 4 meses</p>
-            <p class="fragment">Integración continua</p>
-            <p class="fragment">Medición continua</p>
-          </section>
-
-          <section>
-            <div style="display: block-inline;">
-              <div style="float: left; width: 40%;margin-top: 25%;">
-                <h2>Arquetipo DCI</h2>
-
-              </div>
-              <div style="float: left; width: 60%;">
-                <img src="img/repo_snapshot.png" alt=""/>
-              </div>
-            </div>
-          </section>
-
-
-        </section>
-        <section data-background="#006666">
-          <section>
-            <h2>Prototipo DCI</h2>
-          </section>
-
-          <section>
-            <table style="color: white;">
-              <thead>
-                <tr>
-                  <th>Categoría</th>
-                  <th>LOC</th>
-                  <th>Equipo</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Small - Pequeño</td>
-                  <td>5000 &#8594; 20000</td>
-                  <td>1 &#8594; 2</td>
-                </tr>
-                <tr>
-                  <td>Average - Mediano</td>
-                  <td>20000 &#8594; 100000</td>
-                  <td>3 &#8594; 5</td>
-                </tr>
-                <tr>
-                  <td>Large - Grande</td>
-                  <td>100000 &#8594; 300000</td>
-                  <td>5 &#8594; 10</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2>Métricas</h2>
-            <table style="color: white;">
-              <tbody>
-                <tr>
-                  <th><u>Dinámicas</u></th>
-                  <td>Tiempo de actividad, versiones publicadas, peticiones completadas,
-                    peticiones pendientes, tiempo resolución petición
-                  </td>
-                </tr>
-                <tr>
-                  <th><u>Estáticas</u></th>
-                  <td>Archivos, líneas de código, código documentado, cobertura de pruebas,
-                    complejidad ciclomática, tiempo de respuesta, latencia, uso de memoria
-                  </td>
-                </tr>
-                <tr>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2>CECAggregation</h2>
-            <img src="img/prototype_app_01.png" alt="" />
-          </section>
-
-          <section>
-            <h2>CECAggregation</h2>
-            <table style="color:white; font-size: 20px;">
-              <tbody>
-                <tr>
-                  <th>Actividad en producción</th>
-                  <td>38 meses</td>
-                  <th>LOC</th>
-                  <td>9628</td>
-                </tr>
-                <tr>
-                  <th>Versiones publicadas</th>
-                  <td>4</td>
-                  <th>Código documentado</th>
-                  <td>65&#37;</td>
-                </tr>
-                <tr>
-                  <th>Peticiones resueltas</th>
-                  <td>120</td>
-                  <th>Complejidad</th>
-                  <td>17.8</td>
-                </tr>
-                <tr>
-                  <th>Peticiones activas</th>
-                  <td>35</td>
-                  <th>Cobertura de pruebas</th>
-                  <td>77&#37;</td>
-                </tr>
-                <tr>
-                  <th>Resolución petición</th>
-                  <td>2 días</td>
-                  <th>Tiempo de respuesta</th>
-                  <td>250ms</td>
-                </tr>
-                <tr>
-                  <th>Archivos</th>
-                  <td>112</td>
-                  <th>Uso de memoria</th>
-                  <td>29696 KB</td>
-                </tr>
-                <tr>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2>CECAggregation - DCI</h2>
-            <img src="img/comparison_prototype_01.png" style="height: 50%;" alt="" />
-            <p class="fragment">XP + Scrum</p>
-            <p class="fragment">8 entregas, 2 lanzamientos, 2 meses</p>
-          </section>
-
-          <section>
-            <h2>CECAggregation - DCI: Métricas</h2>
-            <table style="color: white;font-size: 22px;">
-              <thead>
-                <tr>
-                  <th>Métrica</th>
-                  <th>Original</th>
-                  <th>DCI</th>
-                  <th>Delta</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Archivos</th>
-                  <td>112</td>
-                  <td>74</td>
-                  <td>30 (34&#37;)</td>
-                </tr>
-                <tr>
-                  <th>LOC</th>
-                  <td>9628</td>
-                  <td>5667</td>
-                  <td>3961 (41&#37;)</td>
-                </tr>
-                <tr>
-                  <th>Código documentado</th>
-                  <td>65&#37;</td>
-                  <td>idem</td>
-                  <td>idem</td>
-                </tr>
-                <tr>
-                  <th>Complejidad</th>
-                  <td>17.8</td>
-                  <td>12.4</td>
-                  <td>5.4 (30&#37;)</td>
-                </tr>
-                <tr>
-                  <th>Cobertura de pruebas</th>
-                  <td>77%</td>
-                  <td>idem</td>
-                  <td>idem</td>
-                </tr>
-                <tr>
-                  <th>Tiempo de respuesta</th>
-                  <td>250ms</td>
-                  <td>270ms</td>
-                  <td>-8&#37;</td>
-                </tr>
-                <tr>
-                  <th>Uso de memoria</th>
-                  <td>29696 KB</td>
-                  <td>33792 KB</td>
-                  <td>-13&#37;</td>
-                </tr>
-                <tr>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2>CECAggregation - DCI: Indicadores</h2>
-            <table style="color: white;font-size: 22px;">
-              <thead>
-                <tr>
-                  <th>Indicadores</th>
-                  <th>Original</th>
-                  <th>DCI</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Desviación de estimación</th>
-                  <td>10</td>
-                  <td>7</td>
-                </tr>
-                <tr>
-                  <th>Desviación de entrega</th>
-                  <td>5</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <th>Errores por iteración</th>
-                  <td>23</td>
-                  <td>17</td>
-                </tr>
-                <tr>
-                  <th>Errores por lanzamiento</th>
-                  <td>14</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <th>Tiempo de arreglo de errores</th>
-                  <td>5</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <th>Tiempo de aplicación de cambios</th>
-                  <td>7</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <th>Tareas de soporte por lanzamiento</th>
-                  <td>28</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <th>Retorno de inversión perdido</th>
-                  <td>20</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2>CECAggregation - DCI</h2>
-            <p class="fragment">
-            Aplicación reducida
-            </p>
-            <p class="fragment">
-            Revisiones de código positivas
-            </p>
-            <p class="fragment">
-            Complejidad reducida
-            </p>
-            <p class="fragment">
-            Completamente compatible
-            </p>
-
-
-          </section>
-        </section>
-
-        <section data-background="#4d7e65">
-          <section>
-            <h2>Resultados</h2>
-            <p class="fragment">Costos de desarrollo reducidos</p>
-            <p class="fragment">Reducción de tiempos de soporte</p>
-            <p class="fragment">Reducción de complejidad</p>
-            <p class="fragment">Intencionalidad del código incrementada</p>
-          </section>
-          <section>
-            <h2>Resultados Inesperados</h2>
-            <p>Lenguaje de programación Trygve           
-            <small>
-              <blockquote>
-                The trygve language project - Building a DCI-centric language from the ground up
-              </blockquote>
-            </small>
-            </p>
-            <a href="http://github.com/jcoplien/trygve/src/master/README.md">http://github.com/jcoplien/trygve/src/master/README.md</a>
-            <p class="fragment">
-              Scala como lenguaje base de nuevos componentes
-            </p>
-            <p class="fragment">
-              Casos de uso como reemplazo de user-stories
-            </p>
-          </section>
-          <section>
-            <h2>Recomendaciones</h2>
-            <p class="fragment">Incluir soporte Trygve en el arquetipo</p>
-            <p class="fragment">Incluir soporte de micro-services</p>
-            <p class="fragment">Incluir integración del modelo de concurrencia de Actores</p>
-          </section>
+          <h2>Conclusiones</h2>
+          <p class="fragment">La simplicidad, pre-requisito para confiabilidad</p>
+          <p class="fragment">Arquitectura, herramientas para lograr simplicidad</p>
+          <p class="fragment">Arquitectura DCI, simplicidad basada en modelos mentales</p>
         </section>
 
         <section>

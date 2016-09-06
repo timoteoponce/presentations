@@ -1,3 +1,14 @@
+Motivación
+
+  La simplicidad es pre-requisito para la consistencia.
+
+  Si hay algo que es necesario que se obtenga de esta 
+  presentación, es retomar la importancia de simplicidad.
+
+  Simplicidad es una característica difícil de obtener,
+  mucho más difícil de mantener, pero brinda una ventaja 
+  abismal con respecto a lo que uno tiene que hacer.
+
 Problema  
 
   Alguna vez han trabajado en un documento Word ubicando imágenes
@@ -45,12 +56,12 @@ Demostracion
   
 Motivación
 
-  Pero DCI carece de herramientas reales que permitan su aplicación
-  en el entorno de desarrollo, es una arquitectura conceptual que 
-  requiere convenciones y artefactos que permitan su uso en ambientes
-  de producción reales.
+  DCI es una alternativa a las herramientas que usamos para elaborar
+  sistemas, que tiene como objetivo reducir la complejidad de las
+  aplicaciones haciendo que estas estén definidas en base al lenguaje
+  natural de los usuarios finales.
 
-Objetivo del estudio
+Objetivo de la presentación 
 
   El objetivo de mi trabajo es elaborar una herramienta de
   aplicación de este patrón arquitectónico que permita desarrollar
