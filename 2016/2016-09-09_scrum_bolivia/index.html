@@ -16,7 +16,8 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
   <body>
     <div class="reveal">
       <div class="slides">
-        <section >
+
+        <section>
           <h1>Datos Contextos e Interacciones</h1>
           <h5>Arquitectura + Paradigma de desarrollo</h5>
           <p>
@@ -225,7 +226,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         <!-- ##################################### -->
         <!-- ##################################### -->
 
-        <section data-background="#336699">
+        <section>
           <section>
             <h2>DCI</h2>
             <img src="img/trygve.jpg" alt="" style="height: 85%;"/>
@@ -397,23 +398,22 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           <section>
             <img src="img/dci_04.jpg" alt="" height="200"/>
             <pre>
-            <code class="ruby">
-              context ComprobanteFinancieroContext{
+            <code class="hljs" data-trim contenteditable>
+  context ComprobanteFinancieroContext{
 
-                def execute(context, userName, periodo)={
-                  def contador = findBy("name",userName) with ContadorRole
-                  def service = context.inject ReportesService.class
-                  def report = service.generarComprobante(contador,periodo)
+    def execute(context, userName, periodo)={
+      def contador = findBy("name",userName) with ContadorRole
+      def service = context.inject ReportesService.class
+      def report = service.generarComprobante(contador,periodo)
 
-                  if contador.balance(report) == STABLE {
-                    service.consolidarReporte report
-                    contex.log "Reporte diario para $periodo consolidado"
-                    return Results.SUCCESS
-                  }
-                  return Results.FAILURE
-                }
-
-              }
+      if contador.balance(report) == STABLE {
+        service.consolidarReporte report
+        contex.log "Reporte diario para $periodo consolidado"
+        return Results.SUCCESS
+      }
+      return Results.FAILURE
+    }
+  }
             </code>
             </pre>
           </section>
@@ -450,6 +450,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
       </div>
     </div>
+    <script src="./reveal.js/lib/js/head.min.js"></script>
     <script src="./reveal.js/js/reveal.js"></script>
     <script>
 Reveal.initialize({
@@ -457,6 +458,12 @@ Reveal.initialize({
   progress: true,
   history: true,
   center: true,
+  // Optional reveal.js plugins
+  dependencies: [
+    { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: './reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: './reveal.js/plugin/zoom-js/zoom.js', async: true }
+  ]
 });
     </script>
   </body>
