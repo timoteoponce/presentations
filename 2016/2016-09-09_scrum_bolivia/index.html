@@ -25,20 +25,15 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           </p>
         </section>
 
+        <!--
         <section>
           <h2>Agenda</h2>
           <ul>
             <li>Simplicidad</li>
             <li>Problema</li>
-            <li>Arquitectura</li>
             <li>Arquitectura DCI</li>
           </ul>
         </section>
-
-
-        <!-- ##################################### -->
-        <!--                SIMPLICIDAD            -->
-        <!-- ##################################### -->
 
         <section>
           <h2>La simplicidad es un pre-requisito para la confiabilidad</h2>
@@ -104,7 +99,70 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             <li class="fragment">Simplicidad reduce el costo de cambios</li>
             <li class="fragment">Simplicidad brinda oportunidades</li>
           </ul>
+        </section>-->
+
+       
+        <!-- ##################################### -->
+        <!--                ARQUITECTURA           -->
+        <!-- ##################################### -->
+        <section data-background-image="img/archs.jpeg">
+          <h1>Arquitectura</h1>
         </section>
+
+        <section>
+          <h2>Definición</h2>
+          <h3><i>Estructura en el más alto nivel de abstracción,
+              definiendo componentes, sus dependencias
+              y la forma en que estos interactúan entre sí</i>
+          </h3>
+          <p><small>(Booch, 2009)</small></p>
+        </section>
+
+        <section>
+          <h2>Importancia</h2>
+          <ul>
+            <li class="fragment">Nosotros creamos sistemas</li>
+            <li class="fragment">Los sistemas se basan en requerimientos</li>
+            <li class="fragment">Los sistemas tienen un costo</li>
+            <li class="fragment">Los requerimientos cambian con el tiempo</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="fragment">Necesitamos diseñar sistemas que puedan cambiar</h2>
+          <h2 class="fragment">Necesitamos agilidad</h2>
+        </section>
+
+        <section>
+          <h2>Beneficios/Desventajas</h2>
+          <ul>
+            <li class="fragment">Falta de arquitectura ofusca entendimiento</li>
+            <li class="fragment">Arquitectura no debería ser opcional</li>
+            <li class="fragment">Arquitectura reduce el costo de cambios</li>
+            <li class="fragment">Arquitectura brinda oportunidades</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Qué tenemos a disposición?</h2>
+          <ul>
+            <li>Responsibility Driven Design (Wirfs-Brock)</li>
+            <li>Domain Driven Design (Evans)</li>
+            <li>Evolutional Design (Jeffries)</li>
+          </ul>
+          <h3 class="fragment">Objetivo: Reducir/Manejar complejidad</h3>
+        </section>
+
+        <!--
+        <section>
+          <h2>Qué problemas tienen todas estas aproximaciones?</h2>
+          <ul>
+            <li class="fragment">Son esquemas para definir sistemas</li>
+            <li class="fragment">Intentan acercarse al modelo mental de usuarios</li>
+            <li class="fragment">Orientados a particionar</li>
+          </ul>
+        </section>
+        -->
 
         <!-- ##################################### -->
         <!-- ##################################### -->
@@ -163,65 +221,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         </section>
 
-        <!-- ##################################### -->
-        <!--                ARQUITECTURA           -->
-        <!-- ##################################### -->
-        <section data-background-image="img/archs.jpeg">
-          <h1>Arquitectura</h1>
-        </section>
-
-        <section>
-          <h2>Definición</h2>
-          <h3><i>Estructura en el más alto nivel de abstracción,
-              definiendo componentes, sus dependencias
-              y la forma en que estos interactúan entre sí</i>
-          </h3>
-          <p><small>(Booch, 2009)</small></p>
-        </section>
-
-        <section>
-          <h2>Importancia</h2>
-          <ul>
-            <li class="fragment">Nosotros creamos sistemas</li>
-            <li class="fragment">Los sistemas se basan en requerimientos</li>
-            <li class="fragment">Los sistemas tienen un costo</li>
-            <li class="fragment">Los requerimientos cambian con el tiempo</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 class="fragment">Necesitamos diseñar sistemas que puedan cambiar</h2>
-          <h2 class="fragment">Necesitamos agilidad</h2>
-        </section>
-
-        <section>
-          <h2>Beneficios/Desventajas</h2>
-          <ul>
-            <li class="fragment">Falta de arquitectura ofusca entendimiento</li>
-            <li class="fragment">Arquitectura no debería ser opcional</li>
-            <li class="fragment">Arquitectura reduce el costo de cambios</li>
-            <li class="fragment">Arquitectura brinda oportunidades</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Qué tenemos a disposición?</h2>
-          <ul>
-            <li>Responsibility Driven Design (Wirfs-Brock)</li>
-            <li>Domain Driven Design (Evans)</li>
-            <li>Evolutional Design (Jeffries)</li>
-          </ul>
-          <h3 class="fragment">Objetivo: Reducir/Manejar complejidad</h3>
-        </section>
-
-        <section>
-          <h2>Qué problemas tienen todas estas aproximaciones?</h2>
-          <ul>
-            <li class="fragment">Son esquemas para definir sistemas</li>
-            <li class="fragment">Intentan acercarse al modelo mental de usuarios</li>
-            <li class="fragment">Orientados a particionar</li>
-          </ul>
-        </section>
 
         <!-- ##################################### -->
         <!-- ##################################### -->
@@ -398,7 +397,14 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           <section>
             <img src="img/dci_04.jpg" alt="" height="200"/>
             <pre>
-            <code class="hljs" data-trim contenteditable>
+            <code class="hljs" data-trim>
+  trait ContadorRole{
+    ...
+  }
+
+  trait AuditorRole{
+    ...
+  }
   context ComprobanteFinancieroContext{
 
     def execute(context, userName, periodo)={
@@ -419,6 +425,33 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           </section>
 
           <section>
+            <pre>
+              <code class="hljs" data-trim>
+  class Account
+    ...
+  end
+
+  module MoneySourceRole
+    ...
+  end
+
+  module MoneyDestinationRole
+    ...
+  end
+  
+  class TransferMoneyContext
+    def execute(sourceId, destId, amount)
+      source      = find(:id => sourceId).with MoneySourcerole
+      destination = find(:id => destId  ).with MoneyDestinationRole
+
+      source.transfer amount, destination
+    end
+  end
+              </code>
+            </pre>
+          </section>
+
+          <section>
             <h2>Requerimientos DCI</h2>
             <ul>
               <li>Programación multi-paradigma</li>
@@ -435,6 +468,18 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             <p class="fragment">Java: Qi4j</p>
             <p class="fragment">Java: Trygve</p>
           </section>
+        </section>
+
+        <section>
+          <h2>Ventajas/Desventajas</h2>
+          <p class="fragment">Análisis y diseño de sistemas</p>
+          <p class="fragment">Refleja el modelo mental del usuario</p>
+          <p class="fragment">Pocas herramientas especializadas</p>
+          <p class="fragment">Pocos ejemplos</p>
+        </section>
+
+        <section>
+          <img src="img/lean.jpg" alt="" />
         </section>
 
         <section>
