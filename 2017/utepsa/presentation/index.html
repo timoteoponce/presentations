@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="../reveal.js/css/theme/black.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/simple.css">
     <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
     <!-- Printing and PDF exports -->
     <script>
@@ -25,7 +25,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
         </section>
 
         
-        <section data-background="#b5533c">
+        <section>
           <section>
             <h2>Anécdota</h2>
           </section>
@@ -70,9 +70,15 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
           <section>
             <img src="img/sheldon.jpg" alt="" />
           </section>
+
+          <section>
+            <img src="img/hintjens.jpg" alt="" />
+            <hr />
+            <a href="http://hintjens.com/">Pieter Hintjens</a>
+          </section>
   
           <section>
-            <img src="img/flow_method.png" alt="" />
+            <img src="img/flow_method.jpg" alt="" />
           </section>
 
           <section>
@@ -98,11 +104,66 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
             <h2>Continuous Deployment</h2>
           </section>
 
-          <!--TODO-->
-          <!--definicion continuous deployment-->
-          <!--proceso-->
+          <section>
+            <h3>Cuánto tiempo les toma hacer un cambio 
+            y subirlo a producción?</h3>
+          </section>
+
+          <section>
+            <p>Práctica que permite producir software
+            en cortos periodos de tiempo y de manera frecuente, en un estado
+            listo para producción</p>
+          </section>
+
+          <section>
+            <h3>Proceso</h3>  
+            <img src="img/cd_process.jpg" alt="" />
+          </section>
+
+          <section>
+            <img src="img/continuous-deployment-pipeline.png" alt="" />            
+          </section>
+
+          <section>
+            <img src="img/evolution.png" alt="" />
+          </section>
+
+          <section>
+            <h3>Beneficios</h3>
+            <ul>
+              <li>Feedback rápido</li>
+              <li>Escenario de producción</li>
+              <li>Reactividad</li>
+              <li>Estabilidad eventual</li>              
+            </ul>
+          </section>
+
+          <section>
+            <h3>Riesgos</h3>
+            <ul>
+              <li>Consistencia dependiente de pruebas</li>
+              <li>Dependencias externas/software</li>
+              <li>Lentitud inicial</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Herramientas</h3>
+            <img src="img/jenkins.png" alt="" />
+          </section>
+
           <!--descripcion dentro del servicio X-->
 
+          <section>
+            <h3>Herramientas</h3>
+            <ul>
+              <li>Tests: xUnit, xSpec</li>
+              <li>Automation: Bash, Rake, Ant, Buildr</li>
+              <li>Containers: Docker, Vagrant</li>
+              <li>Deployment: Capistrano, Fabric, Ansible </li>
+              <li>CI/CD hosts: Jenkins, GoCD, Travis, Bitbucket pipelines</li>
+            </ul>
+          </section>
         </section>
 
         <section>
@@ -112,21 +173,60 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
           <section>
             <h3>Clay</h3>
-            TODO
+            <table>
+              <tr>
+                <td>Negocios en crecimiento, startups, tiempo al mercado es crítico</td>
+              </tr>
+              <tr>
+                <td>Plataformas dinámicas: Ruby, NodeJs, Python</td>
+              </tr>
+              <tr>
+                <td>Ambientes dinámicos: AWS, Docker, Azure</td>
+              </tr>
+              <tr>
+                <td>Despliegues frecuentes, diarios, semanales</td>
+              </tr>
+            </table>
           </section>
 
           <section>
             <h3>Wood</h3>
-            TODO
+            <table>
+              <tr>
+                <td>Negocios semi-establecidos, ME, estabilidad e integración con otros servicios</td>
+              </tr>
+              <tr>
+                <td>Plataformas dinámicas y estáticas: C#/Java, Python</td>
+              </tr>
+              <tr>
+                <td>Ambientes dinámicos y estáticos: AWS, Docker, Azure, Servidores locales</td>
+              </tr>
+              <tr>
+                <td>Despliegues aprobados por alguien, semanales, mensuales</td>
+              </tr>
+            </table>
           </section>
 
           <section>
             <h3>Iron</h3>
-            TODO
+            <table>
+              <tr>
+                <td>Negocios establecidos, estabilidad , integración y consistencia</td>
+              </tr>
+              <tr>
+                <td>Plataformas mayormente estáticas: C#/Java, Cobol, Scala</td>
+              </tr>
+              <tr>
+                <td>Ambientes mayormente estáticos: Servidores locales, granja de servidores</td>
+              </tr>
+              <tr>
+                <td>Despliegues poco frecuentes pero estables, mensuales, trimestrales, anuales</td>
+              </tr>
+            </table>
           </section>
         </section>
 
-        <section data-background="#4d7e65">
+        <section>
           <section>
             <h2>Resultados</h2>
             <p class="fragment">Costos de desarrollo reducidos</p>
