@@ -1,0 +1,208 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="./reveal.js/css/theme/simple.css">
+  <link rel="stylesheet" href="./reveal.js/lib/css/zenburn.css">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? './reveal.js/css/print/pdf.css' : './reveal.js/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Software Architecture</h1>
+        <h4>An empirical approach</h4>
+        <p>
+          <small>Por: Juan Timoteo Ponce Ortiz</small>
+        </p>
+      </section>
+
+      <section data-background-image="./imgs/sb.jpg">
+      </section>
+
+      <section data-background-image="./imgs/buildings.jpg">
+      </section>
+
+      <section>
+        <section>
+          <h2>Definition</h2>
+          <p>
+            Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change
+          </p>
+          <small>Booch, 2006</small>
+        </section>
+
+        <section>
+          <h2>Common misconceptions</h2>
+          <p class="fragment">Driven by frameworks</p>
+          <p class="fragment">Driven by requirements</p>
+          <p class="fragment">Defined once and immutable</p>
+          <p class="fragment">Driven by resources</p>
+        </section>
+
+        <section>
+          <h2>Common bad practices</h2>
+          <p class="fragment">Architect chief</p>
+          <p class="fragment">Contractual negotiation</p>
+          <p class="fragment">Marketing strategy</p>
+          <p class="fragment">UML</p>
+        </section>
+
+        <section>
+          <p>
+            Learn about bad practices in architecture, value experience and past mistakes over imposed decisions.
+          </p>
+        </section>
+
+      </section>
+
+      <section>
+        <section>
+          <h2>Software architecture patterns</h2>
+        </section>
+
+        <section>
+          <h2>By communication</h2>
+          <p class="fragment">Synchronous</p>
+          <p class="fragment">Asynchronous</p>
+          <p class="fragment">Event based - State machine</p>
+        </section>
+
+        <section>
+          <h2>By internal structure</h2>
+          <p class="fragment">Layered</p>
+          <p class="fragment">Hexagonal</p>
+          <p class="fragment">Flat</p>
+        </section>
+
+        <section>
+          <h2>By behavior</h2>
+          <p class="fragment">Command Query Segregation Model</p>
+          <p class="fragment">Data Context and Interactions</p>
+          <p class="fragment">Model View Controller</p>
+        </section>
+
+        <section>
+          <h2>By extensibility</h2>
+          <p class="fragment">Pluggable monolith</p>
+          <p class="fragment">Service Oriented Architecture</p>
+          <p class="fragment">Micro services</p>
+        </section>
+
+        <section>
+          <h2>By failure model</h2>
+          <p class="fragment">Optimistic</p>
+          <p class="fragment">Pesimistic</p>
+          <p class="fragment">Self recoverable</p>
+        </section>
+
+        <section>
+          <p>
+            Architecture is not a single thing to learn once and redo over and over, it has many variations and contexts of application.
+          </p>
+        </section>
+
+      </section>
+
+      <section>
+        <section>
+          <h2>Recommended practices</h2>
+        </section>
+
+        <section>
+          <h2>Architect from evolution</h2>
+          <p class="fragment">A developer</p>
+          <p class="fragment">Nurtured and trained</p>
+          <p class="fragment">Model View Controller</p>
+        </section>
+
+        <section>
+          <h2>Document your architecture</h2>
+          <p class="fragment">Register changes and decisions</p>
+          <p class="fragment">Written documents are not the only choice</p>
+          <p class="fragment">Model View Controller</p>
+        </section>
+
+        <section>
+          <h2>Paint yourself in a corner</h2>
+          <p class="fragment">Delay technology</p>
+          <p class="fragment">Requirements shouldn't affect architecture</p>
+          <p class="fragment">Evolution is a must</p>
+        </section>
+
+        <section>
+          <p>
+            Take de advice of more experienced people, but be critical about any decision.
+          </p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Tools and resources</h2>
+        </section>
+
+        <section>
+          <h2>Learn</h2>
+          <ul>
+            <li>Architectural patterns</li>
+            <li>C4 Model for architecture</li>
+            <li>Architecture decision records</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Adopt</h2>
+          <ul>
+            <li>SQL</li>
+            <li>REST or HATEOAS</li>
+            <li>Microservices</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Avoid</h2>
+          <ul>
+            <li>Javascript certificates</li>
+            <li>Architecture by contract</li>
+            <li>Architecture over people</li>
+          </ul>
+        </section>
+
+        <section>
+          <p>
+            Architecture is a relative new field, changes and improvements are coming constantly.
+          </p>
+        </section>
+
+      </section>
+
+      <section>
+        <h1>Danke!!</h1>
+        <h2>Any question?</h2>
+
+      </section>
+
+    </div>
+  </div>
+  <script src="./reveal.js/js/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      slideNumber: true,
+      progress: true,
+      history: true,
+      center: true,
+    });
+  </script>
+</body>
+
+</html>
